@@ -315,9 +315,8 @@ def generate_data():
     risk += np.array([{'Authorised Distributor':-1.5,'Wholesale Market':0.5,
                        'Online Pharmacy':0.3,'Direct from Manufacturer':-0.8,
                        'Grey Market / Informal':2.5}[c] for c in channel])
-    risk += np.array({'>30% Below MRP':2.2,'10-30% Below MRP':1.0,'At MRP':-0.5,
-                      '10-30% Above MRP':0.5,'>30% Above MRP':1.2}.get(p,0)
-                     for p in price_vs_mrp)
+    risk += np.array([{'>30% Below MRP':2.2,'10-30% Below MRP':1.0,'At MRP':-0.5,
+                       '10-30% Above MRP':0.5,'>30% Above MRP':1.2}[p] for p in price_vs_mrp])
     risk += np.array([{'Full GST/VAT Invoice':-1.2,'Incomplete Invoice':0.5,
                        'No Invoice':1.8,'Verbal Only':1.4}[i] for i in invoice])
     risk += np.array([{'QR Verified OK':-2.0,'QR Present but Failed':1.5,
